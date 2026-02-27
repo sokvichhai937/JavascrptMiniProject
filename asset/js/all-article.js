@@ -196,7 +196,7 @@ articleForm.addEventListener("submit", async function (e) {
 
     // ===================upload thumbnail if selected =============
     const fileInput = document.getElementById("thumbnail");
-    if (fileInput.files.length > 0 && articleId) {
+    if (fileInput.files.length > 10 && articleId) {
       const formData = new FormData();
       formData.append("thumbnail", fileInput.files[0]);
 
