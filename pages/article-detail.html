@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Details Articles</title>
+<link rel="shortcut icon" href="../asset/icon/js.png" type="image/x-icon">
+  <link rel="stylesheet" href="../asset/css/dashboard.css">
+
+  <!-- Bootstrap + Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="backdrop" id="backdrop"></div>
+
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="logo"><i class="bi bi-person-fill"></i></div>
+        <div><h5>Admin</h5></div>
+      </div>
+
+      <div class="menu-title">MENU</div>
+
+      <nav class="d-grid gap-2">
+
+        <a class="nav-pill active" href="dashboard.html">
+          <span class="ic"><i class="bi bi-speedometer2"></i></span>
+          <span class="label flex-grow-1">Dashboard</span>
+        </a>
+
+        <!-- My Articles (collapsible) -->
+        <button
+          class="nav-pill w-100 text-start"
+          type="button" 
+          data-bs-toggle="collapse"
+          data-bs-target="#articlesMenu"
+          aria-expanded="true"
+          aria-controls="articlesMenu"
+        >
+          <span class="ic"><i class="bi bi-file-earmark-text"></i></span>
+          <span class="label flex-grow-1">My Articles</span>
+          <i class="bi bi-chevron-down ms-auto" style="color: rgba(31,42,51,.55)"></i>
+        </button>
+
+        <div class="collapse show" id="articlesMenu">
+          <div class="submenu">
+            <a class="" href="all-article.html">All Articles</a>
+            <a href="create-article.html">Create Article</a>
+          </div>
+        </div>
+
+        <a class="nav-pill" href="category.html">
+          <span class="ic"><i class="bi bi-tags"></i></span>
+          <span class="label flex-grow-1">Categories</span>
+        </a>
+
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="divider"></div>
+
+        <!-- ✅ add logout-trigger -->
+        <a class="logout-btn logout-trigger" href="#">
+          <span class="ic"><i class="bi bi-box-arrow-right"></i></span>
+          <span class="label">Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <!-- TOPBAR -->
+      <div class="topbar">
+        <div class="title-wrap">
+          <button class="hamburger" type="button" id="btnToggleSidebar" aria-label="Toggle sidebar">
+            <i class="bi bi-list"></i>
+          </button>
+          <h1 class="page-title">Details Articles</h1>
+        </div>
+
+        <!-- Profile dropdown -->
+        <div class="dropdown">
+          <button
+            class="btn profile-pill dropdown-toggle d-flex align-items-center gap-2"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <img class="avatar" src="" alt="avatar" id="avatarUser">
+            <span class="fw-bold" id="profileUser">User Admin</span>
+          </button>
+
+          <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="border-radius: 16px; overflow:hidden;">
+            <li>
+              <a class="dropdown-item py-2" href="profile.html">
+                <i class="bi bi-person me-2"></i> Profile
+              </a>
+            </li>
+            <li><hr class="dropdown-divider my-1"></li>
+            <li>
+              <!-- ✅ add logout-trigger -->
+              <a class="dropdown-item py-2 text-danger logout-trigger" href="" id="logOut">
+                <i class="bi bi-box-arrow-right me-2"></i> Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CONTENT -->
+      <section class="content">
+        <!-- API CONTENT -->
+            <!-- <div class="container">
+                <div class="card shadow-sm">
+                <div class="card-body p-4 d-flex flex-column">
+                   <h2 class="card-title mb-3">Article Title</h2>
+                   <img src="https://vcover-hz-pic.wetvinfo.com/vcover_hz_pic/0/0qgqd4kcd9ajxrs1730718324583_vjaHUY4d/0" alt="Article Image" class="img-fluid rounded mb-4" style=" height: 500px; object-fit: cover;">
+                   <p class="card-text text-muted mb-4">Published on: 2024-01-01</p>
+                    <h4 class="card-text" id="name">Siv Punleu</h4>
+                    <p class="card-text">content</p>
+                </div>
+                </div>
+            </div> -->
+        
+      </section>
+    </main>
+  </div><!-- /app -->
+
+  <!-- ✅ Logout Confirm Modal (MUST be outside grid/section) -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow" style="border-radius:18px;">
+        <div class="modal-body text-center p-4">
+          <div class="mb-2" style="font-size:48px; color:#e53935;">
+            <i class="bi bi-box-arrow-right"></i>
+          </div>
+
+          <h5 class="fw-bold mb-2">Are you sure?</h5>
+          <p class="text-muted mb-4">Do you want to logout from the system?</p>
+
+          <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-light px-4" data-bs-dismiss="modal">Cancel</button>
+            <a href="" class="btn btn-danger px-4" id="confirmLogout">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../asset/js/dashboard.js"></script>
+  <script src="../asset/js/script.js"></script>
+<script>
+  // https://blogs2.csm.linkpc.net/api/v1/articles + id
+  //const BASE_URL = "https://blogs.tt.linkpc.net/api/v1";
+  document.addEventListener('DOMContentLoaded', function() {
+    const token = localStorage.getItem('token');
+    const container = document.querySelector('.content');
+
+    // ១. ទាញយក ID ឱ្យបានត្រឹមត្រូវ (ដាច់ខាតកុំឱ្យមានជាប់សញ្ញា :1)
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleId = urlParams.get('id');
+
+    if (!articleId) {
+        container.innerHTML = '<div class="alert alert-danger">រកមិនឃើញ ID អត្ថបទឡើយ!</div>';
+        return;
+    }
+
+    const headers = {
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/json'
+    };
+
+    // ២. ហៅ API ទៅកាន់ Endpoint ត្រឹមត្រូវតាម Postman
+    fetch(`${BASE_URL}/articles/${articleId}`, {
+        method: 'GET',
+        headers: headers
+    })
+    .then(response => response.json())
+    .then(result => {
+        // ពិនិត្យមើល Response តាម Postman (ទិន្នន័យស្ថិតក្នុង result.data)
+        if (result.data) {
+            const data = result.data;
+
+            // ៣. បង្ហាញទិន្នន័យទៅក្នុង HTML
+            container.innerHTML = `
+                <div class="container py-5">
+                    <div class="card border-0 shadow-sm" style="border-radius: 20px;">
+                    
+                      <div class="card-header bg-transparent border-0">
+                        <a href="dashboard.html" class="btn btn-bg-primary btn-sm shadow-sm">
+                          <i class="bi bi-arrow-left"></i> Back to Dashboard
+                        </a>
+                      </div>
+                        <div class="card-body p-4">
+                            <h1 class="fw-bold mb-4 ">${data.title}</h1>
+                            
+                            <div class="d-flex align-items-center gap-3 mb-4">
+                                <img src="${data.creator?.avatar || 'https://via.placeholder.com/100'}" 
+                                     class="rounded-circle border" width="50" height="50" style="object-fit: cover;">
+                                <div>
+                                    <p class="mb-0 fw-bold">${data.creator?.firstName || 'Admin'} ${data.creator?.lastName || ''}</p>
+                                    <small class="text-muted">បានចុះផ្សាយនៅ៖ ${new Date(data.createdAt).toLocaleDateString()}</small>
+                                </div>
+                            </div>
+
+                            <img src="${data.thumbnail}
+                                  " alt="Article Image"
+                                 class="img-fluid rounded-4 mb-4 shadow-sm" 
+                                 style="width: 100%; height: 500px; object-fit: cover;">
+                            
+                            <div class="article-content lh-lg" style="font-size: 1.15rem; color: #333;">
+                                ${data.content}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            container.innerHTML = `<div class="alert alert-warning">មិនអាចរកឃើញខ្លឹមសារអត្ថបទទេ!</div>`;
+        }
+    })
+    .catch(error => {
+        console.error("Fetch error:", error);
+        container.innerHTML = `<div class="alert alert-danger text-center">មានបញ្ហាក្នុងការតភ្ជាប់ទៅកាន់ Server!</div>`;
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+body{
+    background-color: rgb(240, 190, 190)!important;
+}
+@font-face {
+    font-family: khmer;
+    src: url(/asset/font-khmer/Khmer-Regular.ttf);
+}
+@font-face {
+    font-family:Baphnom;
+    src: url(/asset/font-khmer/Kh\ Baphnom\ Moul5\ Italic\ Version\ 2.30\ August\ 25\,\ 2016.ttf);
+}
+
+
+/* var color */
+:root{
+    --main-color: rgb(255, 255, 255);
+    --second-color: rgb(0, 0, 0);
+    --hover-color: rgb(255, 0, 0);
+    --font-family: 'khmer', sans-serif;
+    --font-size: 16px;
+    --font-weight: 400;
+    --line-height: 1.5;
+    --text-align: left;
+    --text-decoration: none;
+    --text-transform: none;
+    
+}
+/* global style */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    line-height: var(--line-height);
+    text-align: var(--text-align);
+    text-decoration: var(--text-decoration);
+    text-transform: var(--text-transform);
+    color: var(--main-color);
+}
+h1{
+    font-family: Baphnom, sans-serif;
+    color: var(--hover-color);
+}
+p{
+    font-family: var(--font-family);
+    color: var(--second-color);
+}
+

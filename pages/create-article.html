@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard - Create Article</title>
+  <link rel="shortcut icon" href="../asset/icon/js.png" type="image/x-icon">
+
+  <link rel="stylesheet" href="../asset/css/dashboard.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="backdrop" id="backdrop"></div>
+
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="logo"><i class="bi bi-person-fill"></i></div>
+        <div><h5>Admin</h5></div>
+      </div>
+
+      <div class="menu-title">MENU</div>
+
+      <nav class="d-grid gap-2">
+        <a class="nav-pill" href="dashboard.html">
+          <span class="ic"><i class="bi bi-speedometer2"></i></span>
+          <span class="label flex-grow-1">Dashboard</span>
+        </a>
+
+        <button class="nav-pill w-100 text-start active" type="button"
+          data-bs-toggle="collapse" data-bs-target="#articlesMenu"
+          aria-expanded="true" aria-controls="articlesMenu">
+          <span class="ic"><i class="bi bi-file-earmark-text"></i></span>
+          <span class="label flex-grow-1">My Articles</span>
+          <i class="bi bi-chevron-down ms-auto" style="color: rgba(31,42,51,.55)"></i>
+        </button>
+
+        <div class="collapse show" id="articlesMenu">
+          <div class="submenu">
+            <a href="all-article.html">All Articles</a>
+            <a href="create-article.html" class="active">Create Article</a>
+          </div>
+        </div>
+
+        <a class="nav-pill" href="category.html">
+          <span class="ic"><i class="bi bi-tags"></i></span>
+          <span class="label flex-grow-1">Categories</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="divider"></div>
+        <a class="logout-btn logout-trigger" href="#">
+          <span class="ic"><i class="bi bi-box-arrow-right"></i></span>
+          <span class="label">Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <!-- TOPBAR -->
+      <div class="topbar">
+        <div class="title-wrap">
+          <button class="hamburger" type="button" id="btnToggleSidebar" aria-label="Toggle sidebar">
+            <i class="bi bi-list"></i>
+          </button>
+          <h1 class="page-title">Create Article</h1>
+        </div>
+
+        <div class="dropdown">
+          <button class="btn profile-pill dropdown-toggle d-flex align-items-center gap-2" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img class="avatar" src="" alt="avatar" id="avatarUser">
+            <span class="fw-bold" id="profileUser"></span>
+          </button>
+
+          <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="border-radius: 16px; overflow:hidden;">
+            <li>
+              <a class="dropdown-item py-2" href="profile.html">
+                <i class="bi bi-person me-2"></i> Profile
+              </a>
+            </li>
+            <li><hr class="dropdown-divider my-1"></li>
+            <li>
+              <a class="dropdown-item py-2 text-danger logout-trigger" href="#">
+                <i class="bi bi-box-arrow-right me-2"></i> Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CONTENT -->
+      <section class="content-surface">
+        <div class="create-wrap">
+
+          <div class="create-head">
+            <div>
+              <h2 class="create-title">Article Create</h2>
+              <div class="create-sub">Fill the form to publish a new article.</div>
+            </div>
+
+            <a href="all-article.html" class="btn btn-light back-btn">
+              <i class="bi bi-arrow-left me-2"></i> Back to Articles
+            </a>
+          </div>
+
+          <form id="articleForm" class="create-form" novalidate>
+
+            <!-- Title -->
+            <div class="mb-3">
+              <label class="form-label fw-bold">Title <span class="text-danger">*</span></label>
+              <div class="field-wrap">
+                <input id="title" type="text" class="form-control formX" placeholder="Enter title..." required>
+                <div class="invalid-feedback" id="titleError"></div>
+              </div>
+            </div>
+
+            <!-- Category -->
+            <div class="mb-3">
+              <label class="form-label fw-bold">Category <span class="text-danger">*</span></label>
+              <div class="field-wrap">
+                <select id="categorySelect" class="form-select formX" required>
+                  <option value="">Select category</option>
+                </select>
+                <div class="invalid-feedback" id="categoryError"></div>
+              </div>
+            </div>
+
+            <!-- Thumbnail (optional) -->
+            <div class="mb-3">
+              <label class="form-label fw-bold">Thumbnail (optional)</label>
+              <input id="thumbnail" type="file" class="form-control formX" accept=".jpg,.jpeg,.png,.webp">
+              <div class="text-muted mt-2" style="font-size:.9rem">Supported: JPG/PNG/WEBP (AVIF not supported)</div>
+            </div>
+
+            <!-- Content -->
+            <div class="mb-3">
+              <label class="form-label fw-bold">Content <span class="text-danger">*</span></label>
+              <div class="field-wrap textarea-wrap">
+                <textarea id="content" class="form-control formX" rows="9" placeholder="Write content here..." required></textarea>
+                <div class="invalid-feedback" id="contentError"></div>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="create-actions">
+              <a href="all-article.html" class="btn btn-light back-btn2">
+                <i class="bi bi-arrow-left me-2"></i> Back to Articles
+              </a>
+
+              <button id="btnSubmit" type="submit" class="btn btn-publish">
+                <i class="bi bi-send me-2"></i> Publish Now
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+   <!-- /===========================app====================-->
+  <!-- ✅ Logout Confirm Modal (MUST be outside grid/section) -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow" style="border-radius:18px;">
+        <div class="modal-body text-center p-4">
+          <div class="mb-2" style="font-size:48px; color:#e53935;">
+            <i class="bi bi-box-arrow-right"></i>
+          </div>
+
+          <h5 class="fw-bold mb-2">Are you sure?</h5>
+          <p class="text-muted mb-4">Do you want to logout from the system?</p>
+
+          <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-light px-4" data-bs-dismiss="modal">Cancel</button>
+            <a href="logout.html" class="btn btn-danger px-4" id="confirmLogout">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../asset/js/dashboard.js"></script>
+  <script src="../asset/js/script.js"></script>
+
+  <script>
+    // ===================== CONFIG =====================
+    //const BASE_URL = "https://blogs.tt.linkpc.net/api/v1";
+    //const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+
+    // ===================== ELEMENTS =====================
+    const form = document.getElementById("articleForm");
+    const btnSubmit = document.getElementById("btnSubmit");
+
+    const titleEl = document.getElementById("title");
+    const catEl = document.getElementById("categorySelect");
+    const contentEl = document.getElementById("content");
+    const thumbEl = document.getElementById("thumbnail");
+
+    const errTitle = document.getElementById("titleError");
+    const errCat = document.getElementById("categoryError");
+    const errContent = document.getElementById("contentError");
+
+    let isSubmitting = false;
+
+    function authHeader() {
+      return { Authorization: "Bearer " + token };
+    }
+
+    function isAllowedImage(file) {
+      const okTypes = ["image/jpeg", "image/png", "image/webp"];
+      return okTypes.includes(file.type);
+    }
+
+    // ===================== VALIDATIONS =====================
+    function validateTitle() {
+      const v = titleEl.value.trim();
+      if (!v) {
+        titleEl.classList.add("is-invalid");
+        titleEl.classList.remove("is-valid");
+        errTitle.textContent = "Title is required!";
+        return false;
+      }
+      titleEl.classList.add("is-valid");
+      titleEl.classList.remove("is-invalid");
+      errTitle.textContent = "";
+      return true;
+    }
+
+    function validateCategory() {
+      if (!catEl.value) {
+        catEl.classList.add("is-invalid");
+        catEl.classList.remove("is-valid");
+        errCat.textContent = "Please select category!";
+        return false;
+      }
+      catEl.classList.add("is-valid");
+      catEl.classList.remove("is-invalid");
+      errCat.textContent = "";
+      return true;
+    }
+
+    function validateContent() {
+      const v = contentEl.value.trim();
+      if (!v) {
+        contentEl.classList.add("is-invalid");
+        contentEl.classList.remove("is-valid");
+        errContent.textContent = "Content is required!";
+        return false;
+      }
+      // optional: server needs >= 10 chars
+      if (v.length < 0) {
+        contentEl.classList.add("is-invalid");
+        contentEl.classList.remove("is-valid");
+        errContent.textContent = "Content must be at least 10 characters!";
+        return false;
+      }
+
+      contentEl.classList.add("is-valid");
+      contentEl.classList.remove("is-invalid");
+      errContent.textContent = "";
+      return true;
+    }
+
+    // ===================== LOAD CATEGORIES =====================
+    async function loadCategories() {
+      try {
+        const res = await fetch(`${BASE_URL}/categories`, {
+          headers: authHeader()
+        });
+        const data = await res.json().catch(() => ({}));
+        const items = data?.data?.items || [];
+
+        catEl.innerHTML = `<option value="">Select category</option>`;
+        items.forEach(c => {
+          catEl.innerHTML += `<option value="${c.id}">${c.name}</option>`;
+        });
+      } catch (err) {
+        console.error("Category load error:", err);
+      }
+    }
+
+    // ===================== SUBMIT =====================
+    async function onSubmit(e) {
+      e.preventDefault();
+
+      if (isSubmitting) return;
+      isSubmitting = true;
+      btnSubmit.disabled = true;
+
+      try {
+        const ok1 = validateTitle();
+        const ok2 = validateCategory();
+        const ok3 = validateContent();
+        if (!ok1 || !ok2 || !ok3) return;
+
+        const payload = {
+          title: titleEl.value.trim(),
+          categoryId: Number(catEl.value),
+          content: contentEl.value.trim()
+        };
+
+        // 1) CREATE ARTICLE
+        const res = await fetch(`${BASE_URL}/articles`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            ...authHeader()
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          const msg = data?.message || data?.details?.[0] || "Create failed";
+          throw new Error(msg);
+        }
+
+        // get new articleId
+        const newId = data?.data?.id ?? data?.data?.item?.id ?? data?.id;
+        if (!newId) {
+          // if server didn't return id, still go back
+          window.location.href = "all-article.html";
+          return;
+        }
+
+        // 2) UPLOAD THUMBNAIL (OPTIONAL)
+        if (thumbEl.files && thumbEl.files.length > 0) {
+          const file = thumbEl.files[0];
+
+          if (!isAllowedImage(file)) {
+            throw new Error("Thumbnail must be JPG / PNG / WEBP (AVIF not supported).");
+          }
+
+          const fd = new FormData();
+          fd.append("thumbnail", file);
+
+          const up = await fetch(`${BASE_URL}/articles/${newId}/thumbnail`, {
+            method: "POST",
+            headers: authHeader(),
+            body: fd
+          });
+
+          if (!up.ok) {
+            const errText = await up.text().catch(() => "");
+            throw new Error("Thumbnail upload failed: " + up.status + " " + errText);
+          }
+        }
+
+        // success
+        window.location.href = "all-article.html";
+      } catch (err) {
+        alert(err.message);
+      } finally {
+        btnSubmit.disabled = false;
+        isSubmitting = false;
+      }
+    }
+
+    // ===================== EVENTS =====================
+    form.addEventListener("submit", onSubmit);
+    titleEl.addEventListener("keyup", validateTitle);
+    catEl.addEventListener("change", validateCategory);
+    contentEl.addEventListener("keyup", validateContent);
+
+    // init
+    loadCategories();
+  </script>
+</body>
+</html>

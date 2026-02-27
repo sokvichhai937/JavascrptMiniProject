@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard - Profile</title>
+  <link rel="shortcut icon" href="../asset/icon/js.png" type="image/x-icon">
+
+  <link rel="stylesheet" href="../asset/css/dashboard.css">
+  <link rel="stylesheet" href="../asset/css/profile.css">
+
+  <!-- Bootstrap + Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="backdrop" id="backdrop"></div>
+
+  <div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="logo"><i class="bi bi-person-fill"></i></div>
+        <div>
+          <h5>Admin</h5>
+        </div>
+      </div>
+
+      <div class="menu-title">MENU</div>
+
+      <nav class="d-grid gap-2">
+
+        <a class="nav-pill" href="dashboard.html">
+          <span class="ic"><i class="bi bi-speedometer2"></i></span>
+          <span class="label flex-grow-1">Dashboard</span>
+        </a>
+
+        <!-- My Articles (collapsible) -->
+        <button class="nav-pill w-100 text-start" type="button" data-bs-toggle="collapse"
+          data-bs-target="#articlesMenu" aria-expanded="false" aria-controls="articlesMenu">
+          <span class="ic"><i class="bi bi-file-earmark-text"></i></span>
+          <span class="label flex-grow-1">My Articles</span>
+          <i class="bi bi-chevron-down ms-auto" style="color: rgba(31,42,51,.55)"></i>
+        </button>
+
+        <div class="collapse" id="articlesMenu">
+          <div class="submenu">
+            <a href="all-article.html">All Articles</a>
+            <a href="create-article.html">Create Article</a>
+          </div>
+        </div>
+
+        <a class="nav-pill" href="category.html">
+          <span class="ic"><i class="bi bi-tags"></i></span>
+          <span class="label flex-grow-1">Categories</span>
+        </a>
+
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="divider"></div>
+        <a class="logout-btn logout-trigger" href="#">
+          <span class="ic"><i class="bi bi-box-arrow-right"></i></span>
+          <span class="label">Logout</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- TOPBAR -->
+      <div class="topbar">
+        <div class="title-wrap">
+          <button class="hamburger" type="button" id="btnToggleSidebar" aria-label="Toggle sidebar">
+            <i class="bi bi-list"></i>
+          </button>
+          <h1 class="page-title">Profile</h1>
+        </div>
+
+        <!-- Profile dropdown -->
+        <div class="dropdown">
+          <button class="btn profile-pill dropdown-toggle d-flex align-items-center gap-2" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img class="avatar" src="." alt="avatar" id="avatarUser">
+            <span class="fw-bold" id="profileUser">User Admin</span>
+          </button>
+
+          <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="border-radius: 16px; overflow:hidden;">
+            <li>
+              <a class="dropdown-item py-2" href="profile.html">
+                <i class="bi bi-person me-2"></i> Profile
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider my-1">
+            </li>
+            <li>
+              <a class="dropdown-item py-2 text-danger logout-trigger" href="#">
+                <i class="bi bi-box-arrow-right me-2"></i> Logout
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CONTENT -->
+      <section class="content-surface">
+
+        <div class="page-container">
+
+          <!-- Header card -->
+          <div class="user-card">
+            <div class="card-header">
+
+              <!-- Avatar -->
+              <div class="avatar-box">
+                <div class="avatar-frame">
+                  <img id="avatarImg" src="." alt="avatar">
+                </div>                <button class="icon-btn btn-remove" id="btnDelAvatar" title="Remove photo">
+                  <i class="bi bi-trash"></i>
+                </button>
+
+                <label class="icon-btn btn-upload" for="avatarInput" title="Upload photo">
+                  <i class="bi bi-camera"></i>
+                </label>
+
+                <input id="avatarInput" type="file" accept="image/* " hidden>
+              </div>
+
+              <!-- Name / Email -->
+              <div class="user-info">
+                <h2 class="user-name" id="displayName">Kon Khmer</h2>
+                <div class="user-email" id="displayEmail">konkhmer168@gmail.com</div>
+                <div class="helper-text">Profile picture saves automatically</div>
+              </div>
+
+              <!-- Button -->
+              <div class="action-group">
+                <button class="btn btn-dark-pill" id="btnEdit" onclick="btnedit()" type="button">
+                  <i class="bi bi-pencil-square me-2"></i> Edit Profile
+                </button>
+              </div>
+            </div>
+
+            <!-- Form -->
+            <form id="profileForm" autocomplete="off">
+              <div class="row g-3">
+                <div class="col-12 col-lg-6">
+                  <label class="form-label fw-bold">First Name</label>
+                  <input id="firstName" class="form-control field-input" type="text" value="Kon" disabled>
+                </div>
+
+                <div class="col-12 col-lg-6">
+                  <label class="form-label fw-bold">Last Name</label>
+                  <input id="lastName" class="form-control field-input" type="text" value="Khmer" disabled>
+                </div>
+
+                <div class="col-12">
+                  <label class="form-label fw-bold">Email</label>
+                  <input id="email" class="form-control field-input" type="email" value="konkhmer168@gmail.com" disabled>
+                </div>
+              </div>
+
+              <div class="form-footer" id="saveRow" style="display:none;">
+                <button class="btn btn-light px-4" type="button" id="btnCancel">Cancel</button>
+                <button class="btn btn-save-pill px-4" type="submit" id="btnSave">
+                  <i class="bi bi-check2-circle me-2"></i> Save Changes
+                </button>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </section>
+    </main>
+  </div><!-- /app -->
+
+  <!-- Logout Confirm Modal -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow" style="border-radius:18px;">
+        <div class="modal-body text-center p-4">
+          <div class="mb-2" style="font-size:48px; color:#e53935;">
+            <i class="bi bi-box-arrow-right"></i>
+          </div>
+          <h5 class="fw-bold mb-2">Are you sure?</h5>
+          <p class="text-muted mb-4">Do you want to logout from the system?</p>
+          <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-light px-4" data-bs-dismiss="modal">Cancel</button>
+            <a href="../index.html" class="btn btn-danger px-4" id="confirmLogout">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../asset/js/dashboard.js"></script>
+  <script src="../asset/js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../asset/js/profile.js"></script>
+</body>
+
+</html>
