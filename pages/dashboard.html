@@ -186,7 +186,7 @@
    // const BASE_URL = "https://blogs.tt.linkpc.net/api/v1";
     // ===== SHOW ARTICLES =====
     function showArticles(){
-      fetch(`https://blogs.tt.linkpc.net/api/v1/articles?search=&_page=1&_per_page=100`, {
+      fetch(`https://blogs.tt.linkpc.net/api/v1/articles?search=&_page=1&_per_page=100&sortBy=createdAt&sortDir=asc`, {
         method : 'GET',
         headers : {
           'Content-Type' : 'application/json',
