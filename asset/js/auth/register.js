@@ -68,17 +68,16 @@ async function register() {
         }
 
         // Save Token
-        localStorage.setItem("token", token);
+        // localStorage.setItem("token", token);
 
         await Swal.fire({
             icon: "success",
             title: "ចុះឈ្មោះជោគជ័យ 🎉",
-            text: "កំពុងចូលទៅ Dashboard...",
             timer: 1500,
             showConfirmButton: false
         });
 
-        window.location.href = "../pages/dashboard.html";
+        window.location.href = "../index.html";
 
     } catch (error) {
         Swal.fire({
