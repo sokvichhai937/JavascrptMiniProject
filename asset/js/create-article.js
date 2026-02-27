@@ -33,7 +33,7 @@ async function onSubmit(e) {
       },
       body: JSON.stringify(payload),
     });
-
+//message content Tesxt 100 characters 
     const data = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(data?.message || "Create failed");
 

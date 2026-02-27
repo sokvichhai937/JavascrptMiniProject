@@ -84,3 +84,10 @@ document.addEventListener("DOMContentLoaded", () => {
 ///======= End of Logout Modal =====================
 
 
+// ==== TOken validate
+if(!token){
+  window.location.href = "../index.html";
+
+}
+
+
