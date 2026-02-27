@@ -1,5 +1,5 @@
 /// get token
-    const token = localStorage.getItem("token");
+    // const token = localStorage.getItem("token");
     const BASE_URL = "https://blogs.tt.linkpc.net/api/v1";
 
   // 1) ការពារកុំឱ្យចូលមកទំព័រ Login បើមាន token រួច
